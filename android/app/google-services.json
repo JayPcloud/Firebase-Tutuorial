@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "373016114878",
+    "project_id": "noteapp-1b52d",
+    "storage_bucket": "noteapp-1b52d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373016114878:android:ffcabcab9464fb17f110ef",
+        "android_client_info": {
+          "package_name": "com.example.firebase_tutorial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8skizEmIaWcz0IE_LqydW5jVCLC_mYBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
