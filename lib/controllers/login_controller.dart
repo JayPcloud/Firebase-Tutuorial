@@ -20,7 +20,6 @@ class LoginController extends GetxController{
     if (!regExp.hasMatch(value)) {
       return 'Enter a valid email address';
     }
-
   }
 
   String? passValidator(String input) {
@@ -47,6 +46,7 @@ class LoginController extends GetxController{
       );
       Get.offAllNamed(AppRouter.wrapper);
     } catch(e) {
+      Get.back();
       Get.showSnackbar(
         GetSnackBar(
           message: e.toString(),

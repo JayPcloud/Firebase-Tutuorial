@@ -1,10 +1,14 @@
 import 'package:firebase_tutorial/routers/app_router.dart';
 import 'package:firebase_tutorial/services/auth_service.dart';
+import 'package:firebase_tutorial/services/user_registeration_services.dart';
 import 'package:get/get.dart';
+
+import '../models/user_model.dart';
 
 class SignupController extends GetxController{
   
   final _auth = Get.put(AuthService());
+  final _userRepo = Get.put(UserRepository());
   
   RxBool isLoading = false.obs;
 
@@ -42,7 +46,9 @@ class SignupController extends GetxController{
   void signUp(String email, String password) async {
     try {
       isLoading.value=true;
-      await _auth.signUp(email, password);
+      final user = await _auth.signUp(email, password);
+      final userModel = UserModel(id: user!.uid, email: user.email??'', username: '');
+      await _userRepo.addUser(userModel);
       Get.showSnackbar(
         GetSnackBar(
           message: 'Registeration Successful. Please login',

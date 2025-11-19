@@ -1,21 +1,36 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_tutorial/controllers/signup_controller.dart';
 import 'package:firebase_tutorial/routers/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final emailCtrl = TextEditingController();
-    final passwordCtrl = TextEditingController();
-    final confirmPassCtrl = TextEditingController();
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+    
+class _SignupScreenState extends State<SignupScreen> {
 
-    final formKey = GlobalKey<FormState>();
-    final controller = Get.put(SignupController());
+  final emailCtrl = TextEditingController();
+  final passwordCtrl = TextEditingController();
+  final confirmPassCtrl = TextEditingController();
+ 
+  final formKey = GlobalKey<FormState>();
+ final controller = Get.put(SignupController());
 
+
+  @override
+  void dispose() {
+    emailCtrl.dispose();
+    passwordCtrl.dispose();
+    confirmPassCtrl.dispose();
+    formKey.currentState?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {    
     return Scaffold(
       body: Center(
         child: Padding(
