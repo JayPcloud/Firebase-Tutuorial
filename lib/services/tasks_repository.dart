@@ -15,12 +15,12 @@ class TasksRepository {
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> getUsersTasks() {
-    return _db.collection('users').doc(currentUser?.uid).collection('Tasks').snapshots();
-  }
+    return _db.collection('users').doc(currentUser?.uid).collection('Tasks').orderBy('is_completed',).orderBy('created_at', descending: true).snapshots();
+  } 
 
   Future<void> updateTask(String taskDocId, Map<String, dynamic> data) async{
     await _db.collection('users').doc(currentUser?.uid).collection('Tasks').doc(taskDocId).update(
-      data
+      data  
     );
   }
 

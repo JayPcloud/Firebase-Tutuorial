@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController{
 
   final _auth = Get.put(AuthService());
-  final _taskRepo = Get.put(TasksRepository());
+  final taskRepo = Get.put(TasksRepository());
 
 
   Future<void> addTask(BuildContext context,String description)async {
@@ -19,14 +19,46 @@ class HomeController extends GetxController{
         builder: (context)=> Center(child: CircularProgressIndicator())
         );
       final task = TaskModel(description: description, isCompleted: false);
-      await _taskRepo.createTask(task);
+      await taskRepo.createTask(task);
+      Get.back();
       Get.back();
       showSnackBar('Task Created Successfully');
     }catch(e) {
       Get.back();
+      Get.back();
        showSnackBar('Task Created Successfully');
     }
 
+
+  }
+
+  void markOrRemoveAsCompleted(String docId, bool isCompleted) async{
+    try {
+      await taskRepo.updateTask(docId, {'is_completed': isCompleted});
+    } catch(e) {
+      print(e.toString());
+      showSnackBar('Failed to update task');
+    }
+  }
+
+  void editTask(BuildContext context, String docId, String description) async{
+    try {
+      showDialog(
+        context: context, 
+        barrierDismissible: false,
+        builder: (context)=> Center(child: CircularProgressIndicator())
+        );
+        await taskRepo.updateTask(docId, {
+          'description' : description.trim()
+        });
+        Get.back();
+        Get.back();
+        showSnackBar('Task updated successfully');
+    } catch(e) {
+      Get.back();
+      Get.back();
+      showSnackBar('Error updating Task');
+    }
 
   }
 
