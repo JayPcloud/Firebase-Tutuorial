@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () async {
                     if(task != null) {
                        controller.editTask(context, task.id??'', editDescTextCtrl.text.trim());
-                       editDescTextCtrl.dispose();
+                       editDescTextCtrl.clear();
                        return;
                     }
                     if (formKey.currentState?.validate() ?? false) {

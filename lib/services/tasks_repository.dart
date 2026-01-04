@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_tutorial/models/task_model.dart';
 
+
 class TasksRepository {
 
   final _db = FirebaseFirestore.instance;
