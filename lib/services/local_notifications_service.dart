@@ -25,7 +25,6 @@ class LocalNotificationsService {
     description: 'Android push notification channel',
     importance: Importance.max,
     );
-
   
   bool _isFlutterLocalNotificationsInitialized = false;
 
@@ -52,7 +51,7 @@ class LocalNotificationsService {
     await _flutterLocalNotificationsPlugin.initialize(initializationSettings,
     onDidReceiveNotificationResponse: (NotificationResponse response) {
       //Handle notification tap in foreground
-      print('Foreground notification had been tapped: ${response.payload}');
+      print('Foreground notification had been tapped -: ${response.payload}');
     },
     );
 
@@ -98,4 +97,9 @@ class LocalNotificationsService {
           );
     }
 
+    void task() {
+      
+    }
+
 }
+
